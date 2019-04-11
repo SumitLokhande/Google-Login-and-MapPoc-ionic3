@@ -1,0 +1,7 @@
+{
+  "name": "googlePOC",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
