@@ -24,21 +24,12 @@ let options = {
 export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   constructor(public platform: Platform ,public navCtrl: NavController,private googlePlus: GooglePlus,public alertCtrl: AlertController,public toastCtrl: ToastController,private geolocation: Geolocation) {
-    platform.ready().then(() => {
+   
       console.log("1 achived ")
       this.initMap();
-    });
   }
   ionViewDidLoad() {
-    // this.geolocation.getCurrentPosition().then((resp) => {
-    //   console.log(resp.coords.latitude,"latitude");
-    //   console.log(resp.coords.longitude,"longitude");
-
-    //   // resp.coords.latitude
-    //   // resp.coords.longitude
-    //  }).catch((error) => {
-    //    console.log('Error getting location', error);
-    //  });
+    
   }
 
   initMap() {
@@ -55,6 +46,7 @@ export class HomePage {
       infowindow = new google.maps.InfoWindow();
 
       console.log("infowidnow ",infowindow)
+
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: {lat: location.coords.latitude, lng: location.coords.longitude},
@@ -74,7 +66,6 @@ export class HomePage {
     }, (error) => {
       console.log(error);
     }, options);
-    var myplace = {lat: -33.8665, lng: 151.1956};
   }
 
   createMarker(place) {
