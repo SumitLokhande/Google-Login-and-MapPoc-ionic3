@@ -45,20 +45,28 @@ export class HomePage {
     console.log("2 achived ")
     navigator.geolocation.getCurrentPosition((location) => {
       console.log(location);
+
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {lat: location.coords.latitude, lng: location.coords.longitude},
         zoom: 15
       });
-  
+  console.log("map object ", map);
+
       infowindow = new google.maps.InfoWindow();
+
+      console.log("infowidnow ",infowindow)
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: {lat: location.coords.latitude, lng: location.coords.longitude},
-        radius: 10000,
-        type: ['Hospital']
+        radius: 1000,
+        type: ['hospital']
       }, (results,status) => {
+        console.log(" result ",results);
+        console.log(" status ",status);
         if (status === google.maps.places.PlacesServiceStatus.OK) {
+          console.log(" stattus condition  ",status)
           for (var i = 0; i < results.length; i++) {
+            console.log(" Creating marker ")
             this.createMarker(results[i]);
           }
         }
@@ -95,8 +103,7 @@ export class HomePage {
       // infowindow.setContent(place.name);
       // infowindow.open(map, this);
 
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-      'Place ID: ' + place.place_id + '<br>' +
+      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + '<br>' +
       place.vicinity + '</div>');
     infowindow.open(map, this);
     });
