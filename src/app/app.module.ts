@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,6 +32,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     GooglePlus,
     Geolocation,
+    Diagnostic,
+    OpenNativeSettings,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

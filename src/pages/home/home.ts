@@ -6,8 +6,9 @@ import { LoginPage } from '../login/login';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-
-
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
+import { Subscription } from 'rxjs/Subscription';
 declare var google;
 let map: any;
 let infowindow: any;
@@ -23,13 +24,43 @@ let options = {
 
 export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
-  constructor(public platform: Platform ,public navCtrl: NavController,private googlePlus: GooglePlus,public alertCtrl: AlertController,public toastCtrl: ToastController,private geolocation: Geolocation) {
-   
-      console.log("1 achived ")
+  private onResumeSubscription: Subscription;
+  constructor(private openNativeSettings: OpenNativeSettings,private diagnostic: Diagnostic,public platform: Platform ,public navCtrl: NavController,private googlePlus: GooglePlus,public alertCtrl: AlertController,public toastCtrl: ToastController,private geolocation: Geolocation) {
+    this.diagnostic.isGpsLocationEnabled().then((res)=>{
+      console.log(res,"diagnostics");
+      if(res){
+        console.log("1 achived ")
+        this.initMap();
+      } else {
+        const confirm = this.alertCtrl.create({
+          title: 'Use this lightsaber?',
+          message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+          buttons: [
+            {
+              text: 'Disagree',
+              handler: () => {
+                console.log('Disagree clicked');
+              }
+            },
+            {
+              text: 'Agree',
+              handler: () => {
+                this.openNativeSettings.open('location');
+              }
+            }
+          ]
+        });
+        confirm.present();
+      }
+      
+    })
+    this.onResumeSubscription = platform.resume.subscribe(() => {
       this.initMap();
+      // do something meaningful when the app is put in the foreground
+   }); 
   }
   ionViewDidLoad() {
-    
+   
   }
 
   initMap() {

@@ -1,0 +1,45 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "11.8.0",
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROID_SUPPORT_VERSION": "28.+",
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    },
+    "cordova-open-native-settings": {
+      "PACKAGE_NAME": "io.sumit.googlePOC"
+    }
+  },
+  "dependent_plugins": {}
+}
